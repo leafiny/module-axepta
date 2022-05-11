@@ -1,0 +1,13 @@
+{% set sale = block.getCustom('sale') %}
+
+<h3>{{ 'Thank you for your purchase!'|translate }}</h3>
+
+<p>{{ 'Your credit card payment has been successfully registered.'|translate }}</p>
+
+<p>{{ 'Your order number is:'|translate }} <strong>{{ sale.getSaleIncrementId }}</strong>.</p>
+
+{% if sale.getInclTaxTotal %}
+    <p>{{ 'The total amount of your order is'|translate }} <strong>{{ sale.getInclTaxTotal|currency }}</strong>.</p>
+{% endif %}
+
+<p>{{ 'We\'ll email you an order confirmation with details.'|translate }}</p>
