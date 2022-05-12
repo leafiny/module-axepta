@@ -39,7 +39,7 @@ class Axepta_Page_Notify extends Core_Page
             /** @var Commerce_Model_Sale $saleModel */
             $saleModel = App::getSingleton('model', 'sale');
 
-            $sale->setData('payment_state', $axeptaPayment->getParam('Description'));
+            $sale->setData('payment_state', strtolower($axeptaPayment->getParam('Description')));
             $sale->setData('payment_ref', $axeptaPayment->getParam('PayID'));
             $saleModel->save($sale);
 
