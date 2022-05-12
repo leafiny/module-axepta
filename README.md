@@ -6,6 +6,12 @@ The module integrates the payment with BNP Paribas Axepta.
 
 Copy `Axepta_Payment` into your Leafiny `modules` directory.
 
+Deploy the resources if the website root is `pub`:
+
+```
+php deploy.php
+```
+
 # Dependency
 
 **Axepta_Payment** need the native **Leafiny_Payment** module.
