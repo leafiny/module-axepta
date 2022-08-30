@@ -28,7 +28,7 @@ class Axepta_Page_Notify extends Core_Page
             /** @var Axepta_Model_Payment_Online_Axepta $payment */
             $payment = App::getSingleton('model', Axepta_Model_Payment_Online_Axepta::PAYMENT_METHOD);
 
-            $sale = $payment->getRequestedSale('post');
+            $sale = $payment->getRequestedSale();
             if (!$sale) {
                 throw new Exception('Sale not found');
             }

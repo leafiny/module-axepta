@@ -69,6 +69,7 @@ class Axepta_Model_Payment_Online_Axepta extends Payment_Model_Payment
         $axeptaPayment->setURLBack(App::getBaseUrl(true) . 'payment/axepta/cancel/?key=' . $sale->getData('key'));
         $axeptaPayment->setLanguage($language);
         $axeptaPayment->setOrderDesc($this->getOrderDesc());
+        $axeptaPayment->setMsgVer();
         $axeptaPayment->setResponseParam();
 
         $axeptaPayment->validate();
@@ -106,7 +107,7 @@ class Axepta_Model_Payment_Online_Axepta extends Payment_Model_Payment
      *
      * @return Leafiny_Object|false
      */
-    public function getRequestedSale(string $method = 'get')
+    public function getRequestedSale()
     {
         try {
             if (!$this->getMerchantId()) {
@@ -124,10 +125,7 @@ class Axepta_Model_Payment_Online_Axepta extends Payment_Model_Payment
             $axeptaPayment->setSecretKey($this->getHMACKey());
             $axeptaPayment->setCryptKey($this->getBlowfishKey());
 
-            $response = $_GET;
-            if ($method === 'post') {
-                $response = $_POST;
-            }
+            $response = empty($_POST) ? $_GET : $_POST;
             if (empty($response)) {
                 return false;
             }
@@ -184,7 +182,7 @@ class Axepta_Model_Payment_Online_Axepta extends Payment_Model_Payment
     }
 
     /**
-     * Retrieve order desription
+     * Retrieve order description
      *
      * @return string|null
      */
