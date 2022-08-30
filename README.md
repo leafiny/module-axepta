@@ -29,8 +29,11 @@ $config = [
             'merchant_id'  => '',
             'hmac_key'     => '',
             'blowfish_key' => '',
+            'order_desc'   => '',
         ],
     ],
     /* ... */
 ];
 ```
+
+The **order_desc** param is optional (default "Cart Payment"). The content will be displayed on the payment page. Set "**Test:0000**" for a simulation in production (test with a real card without capture).
